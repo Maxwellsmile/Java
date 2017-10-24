@@ -1,0 +1,121 @@
+1、画出下面代码的内存图解
+	//使用Java代码体现出人
+	class Person
+	{
+		//描述人的姓名
+		String name;
+		//描述人的年龄
+		int age;
+		//描述人的说话行为
+		void say()
+		{
+			System.out.println("name="+name+",age="+age);
+		}
+	}
+	/*
+	上面是使用Java代码描述出人的模版(类),
+	如果想要让人说出自己的年龄和姓名，就必须创建人的对象
+	*/
+	class PersonDemo 
+	{
+		public static void main(String[] args) 
+		{
+			//创建人的对象
+			Person p = new Person();
+			p.say();
+			p.name = "王嘉男";
+			p.age = 16;
+			p.say();
+		}
+	}
+
+2、下面程序运行结果，并画图
+	class Demo
+	{
+		int x = 3;
+		public static void main(String[] args)
+		{
+			int y = 10;
+			Demo d = new Demo();
+			d.show(d,y);
+			System.out.println("d.x="+d.x);
+			System.out.println("y="+y);
+		}
+		public void show( Demo d ,int y )
+		{
+			d.x += y;
+			y += d.x;
+		}
+	}
+
+3、下面程序有没有问题。
+class Demo
+{
+	Demo()
+	{
+		System.out.println("xxxxxxxxxxxxxxxxx");
+	}
+	void Demo()
+	{
+		System.out.println("yyyyyyyyyyyyyyyy");
+	}
+}
+
+4、下面程序有问题吗？什么问题？画图
+
+class Demo
+{
+	Demo d =  new Demo();
+	Demo()
+	{
+		System.out.println("Demo...........");
+	}
+}
+class Test
+{
+	public static void main(String[] args)
+	{
+		new Demo();
+	}
+}
+
+5、需求，描述人，并且实现功能，比较是否是同龄人。
+
+6、需求：描述圆，实现计算圆面积的功能。
+
+7、以下运行结果为？并理解
+运行顺序：
+   静态属性
+   静态块
+   非静态属性
+   构造块
+   构造方法
+public class Demo2 {
+    public static int k = 0;
+    public static Demo2 t1 = new Demo2("t1");
+    public static Demo2 t2 = new Demo2("t2");
+    public static int i = print("i");
+    public static int j = print("j");
+    public static int n = 99;
+
+    {
+        print("constructor code");
+    }
+    static {
+        print("static code");
+    }
+    public static int print(String s) {
+        System.out.println("i="+i +"   "+s+ "  k=" + k + "  n=" + n + "   j=" + j);
+        ++i;
+        ++k;
+        ++n;
+        return i;
+    }
+    public Demo2(String string) {
+     
+        print(string);
+    }
+    public static void main(String[] args) {
+        Demo2 d=new Demo2("T");
+    }
+}
